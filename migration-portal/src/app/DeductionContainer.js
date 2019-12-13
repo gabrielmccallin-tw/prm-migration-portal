@@ -1,5 +1,5 @@
-import React from "react";
-import {Route, Switch, useHistory} from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Switch, useHistory } from "react-router-dom";
 import DeductionForm from "../deduction-form/DeductionForm";
 import Confirmation from "../confirmation/Confirmation";
 import Success from "../success/Success";
@@ -9,34 +9,52 @@ import NHSIdentitySandpitLogInUrl from "../config";
 import StatusList from "../status-list/StatusList";
 
 const DeductionContainer = () => {
-  const history = useHistory();
+    const history = useHistory();
 
-  return <Switch>
-      <Route exact path="/">
+    const [data, setData] = useState([]);
+
+    const addToPatientList = async () => {
+        const response = await fetch(`https://api.coinmarketcap.com/v1/ticker/?limit=10`);
+        const json = await response.json();
+        setData(json);
+    };
+
+    return <Switch>
+        {/* <Route exact path="/">
           <Login login={() => window.location.href = `${NHSIdentitySandpitLogInUrl}`} loginMock={() => history.push("/home")}/>
-      </Route>
-      <Route path="/auth" component={Auth}>
-          {/*<DeductionForm submitDeduction={() => history.push("/confirmation")}*/}
-          {/*               validateNhsNumber={validateNhsNumber}/>*/}
-      </Route>
-      <Route path='/home'>
-          <DeductionForm submitDeduction={() => history.push("/confirmation")}
-                         validateNhsNumber={validateNhsNumber}/>
-      </Route>
-      <Route path='/confirmation'>
-          <Confirmation confirmDeduction={() => history.push("/success")}/>
-      </Route>
-      <Route path="/success">
-          <Success/>
-      </Route>
-      <Route path="/status">
-          <StatusList/>
-      </Route>
-      <Route path="/logout">
-          <Login login={() => window.location.href = `${NHSIdentitySandpitLogInUrl}`} loginMock={() => history.push("/home")} />
-      </Route>
-  </Switch>;
+      </Route> */}
+        {/* <Route path="/auth" component={Auth}> */}
+        {/*<DeductionForm submitDeduction={() => history.push("/confirmation")}*/}
+        {/*               validateNhsNumber={validateNhsNumber}/>*/}
+        {/* </Route> */}
+        <Route exact path='/'>
+            <DeductionForm submitDeduction={() => {
+                history.push("/confirmation");
+            }}
+                validateNhsNumber={validateNhsNumber} />
+        </Route>
+        <Route path='/confirmation'>
+            <Confirmation confirmDeduction={() => {
+                history.push("/success");
+                addToPatientList();
+            }} />
+        </Route>
+        <Route path="/success">
+            <Success />
+        </Route>
+        <Route path="/activity">
+            <StatusList data={data} />
+        </Route>
+    </Switch>;
 };
+
+// const data = [{
+//     nhsNumber: 5637487498,
+//     name: 'Donald Duck',
+//     requestor: 123456789012,
+//     requestDate: '13/12/2019',
+//     status: 'Success'
+// }];
 
 const validateNhsNumber = (nhsNumber) => {
     const nhsNumRegex = /^\d{10}$/;

@@ -6,12 +6,12 @@ const DeductionForm = ({submitDeduction, validateNhsNumber}) => {
 
   const onSubmit = event => {
     event.preventDefault();
-    const result = validateNhsNumber(nhsNumber);
-    if(result.length>0){
-      setError(result)
-    }else{
+    // const result = validateNhsNumber(nhsNumber);
+    // if(result.length>0){
+      // setError(result)
+    // }else{
       submitDeduction(nhsNumber);
-    }
+    // }
   };
 
   const isEmpty = value =>{
@@ -38,8 +38,8 @@ const DeductionForm = ({submitDeduction, validateNhsNumber}) => {
         <span className="nhsuk-error-message" data-testid="error">
           {error}
         </span>
-        <button className="nhsuk-button" type="submit" disabled={isEmpty(nhsNumber)}>
-          Submit
+        <button className="nhsuk-button" type="submit">
+          Lookup patient
         </button>
       </form>
     </div>
