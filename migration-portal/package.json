@@ -1,5 +1,6 @@
 {
   "name": "deductions-gp-portal-app",
+  "homepage": "https://gabrielmccallin-tw.github.io/prm-migration-portal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +15,8 @@
     "yarn": "^1.19.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -37,6 +40,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.3.0",
+    "gh-pages": "^2.1.1",
     "pa11y": "^5.3.0",
     "pa11y-ci": "^2.3.0"
   }
