@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 import Logout from "../logout/Logout";
 
 const Header = () => {
@@ -25,7 +25,7 @@ const Header = () => {
         </a>
       </div>
       <div className="nhsuk-header__transactional-service-name">
-        <a className="nhsuk-header__transactional-service-name--link" href="/">Portal</a>
+        <a className="nhsuk-header__transactional-service-name--link" href="/">Migration Portal</a>
       </div>
       <div className="nhsuk-header__content" id="content-header">
         <div className="nhsuk-header__menu nhsuk-header__menu--only">
@@ -43,24 +43,23 @@ const Header = () => {
               <span className="nhsuk-u-visually-hidden">Close menu</span>
             </button>
           </p>
-          <ul className="nhsuk-header__navigation-list">
+          <ul className="nhsuk-header__navigation-list nhsuk-header__navigation-list--tight">
             <li className="nhsuk-header__navigation-item">
-              <a className="nhsuk-header__navigation-link" href="/home" onClick={() => history.push("/home")}>
-                Request
+              <Link className="nhsuk-header__navigation-link" to="/">
+                Transfer
                 <svg className="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z" />
                 </svg>
-              </a>
+              </Link>
             </li>
             <li className="nhsuk-header__navigation-item">
-              <a className="nhsuk-header__navigation-link" href="/status" onClick={() => history.push("/status")}>
-                Status List
+              <Link className="nhsuk-header__navigation-link" to="/activity">
+                Activity
                 <svg className="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z" />
                 </svg>
-              </a>
+              </Link>
             </li>
-            <Logout/>
           </ul>
         </div>
       </nav>
