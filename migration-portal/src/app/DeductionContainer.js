@@ -7,6 +7,7 @@ import Login from "../login/Login";
 import Auth from "../auth/Auth"
 import NHSIdentitySandpitLogInUrl from "../config";
 import StatusList from "../status-list/StatusList";
+import { publicPath } from "../env"
 
 const DeductionContainer = () => {
     const history = useHistory();
@@ -27,22 +28,22 @@ const DeductionContainer = () => {
         {/*<DeductionForm submitDeduction={() => history.push("/confirmation")}*/}
         {/*               validateNhsNumber={validateNhsNumber}/>*/}
         {/* </Route> */}
-        <Route exact path='/'>
+        <Route exact path={`/${publicPath}`}>
             <DeductionForm submitDeduction={() => {
-                history.push("/confirmation");
+                history.push(`/${publicPath}/confirmation`);
             }}
                 validateNhsNumber={validateNhsNumber} />
         </Route>
-        <Route path='/confirmation'>
+        <Route path={`/${publicPath}/confirmation`}>
             <Confirmation confirmDeduction={() => {
-                history.push("/success");
+                history.push(`/${publicPath}/activity`);
                 addToPatientList();
             }} />
         </Route>
-        <Route path="/success">
+        {/* <Route path="/success">
             <Success />
-        </Route>
-        <Route path="/activity">
+        </Route> */}
+        <Route path={`/${publicPath}/activity`}>
             <StatusList data={data} />
         </Route>
     </Switch>;
