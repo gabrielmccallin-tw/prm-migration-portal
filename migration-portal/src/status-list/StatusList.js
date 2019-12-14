@@ -1,33 +1,32 @@
 import React from 'react';
 
-// const popRows = (data) => {
-//   // return data.map(({ nhsNumber, name, requestor, requestDate, status }) => {
-//   return data.map(({ symbol, name, rank, price_usd, market_cap_usd }) => {
-//     return (
-//       <tr className="nhsuk-table__row">
-//         <td className="nhsuk-table__cell">{nhsNumber}</td>
-//         <td className="nhsuk-table__cell ">{name}</td>
-//         <td className="nhsuk-table__cell ">{requestor}</td>
-//         <td className="nhsuk-table__cell ">{requestDate}</td>
-//         <td className="nhsuk-table__cell ">{status}</td>
-//       </tr>
-//     )
-//   })
-// };
-
 const popRows = (data) => {
-  return data.map(({ symbol, name, rank, price_usd, market_cap_usd }) => {
+  return data.map(({ nhs, name }) => {
     return (
       <tr className="nhsuk-table__row">
-        <td className="nhsuk-table__cell">{symbol}</td>
+        <td className="nhsuk-table__cell">{nhs}</td>
         <td className="nhsuk-table__cell ">{name}</td>
-        <td className="nhsuk-table__cell ">{rank}</td>
-        <td className="nhsuk-table__cell ">{price_usd}</td>
-        <td className="nhsuk-table__cell ">{market_cap_usd}</td>
+        <td className="nhsuk-table__cell ">8746598347598</td>
+        <td className="nhsuk-table__cell ">Today</td>
+        <td className="nhsuk-table__cell ">Pending</td>
       </tr>
     )
   })
 };
+
+// const popRows = (data) => {
+//   return data.map(({ symbol, name, rank, price_usd, market_cap_usd }) => {
+//     return (
+//       <tr className="nhsuk-table__row">
+//         <td className="nhsuk-table__cell">{symbol}</td>
+//         <td className="nhsuk-table__cell ">{name}</td>
+//         <td className="nhsuk-table__cell ">{rank}</td>
+//         <td className="nhsuk-table__cell ">{price_usd}</td>
+//         <td className="nhsuk-table__cell ">{market_cap_usd}</td>
+//       </tr>
+//     )
+//   })
+// };
 
 
 

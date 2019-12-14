@@ -7,12 +7,15 @@ import Login from "../login/Login";
 import Auth from "../auth/Auth"
 import NHSIdentitySandpitLogInUrl from "../config";
 import StatusList from "../status-list/StatusList";
-import { publicPath } from "../env"
+import { publicPath } from "../env";
+import { lookup } from "../service/pds"
 
 const DeductionContainer = () => {
     const history = useHistory();
 
     const [data, setData] = useState([]);
+    const [pdsResponse, setPdsResponse] = useState();
+    const [patientList, setPatientList] = useState([]);
 
     const addToPatientList = async () => {
         const response = await fetch(`https://api.coinmarketcap.com/v1/ticker/?limit=10`);
@@ -29,26 +32,27 @@ const DeductionContainer = () => {
         {/*               validateNhsNumber={validateNhsNumber}/>*/}
         {/* </Route> */}
         <Route exact path={`/${publicPath}`}>
-            <DeductionForm submitDeduction={() => {
+            <DeductionForm submitDeduction={(nhs) => {
+                setPdsResponse(lookup(nhs));
                 history.push(`/${publicPath}/confirmation`);
             }}
                 validateNhsNumber={validateNhsNumber} />
         </Route>
         <Route path={`/${publicPath}/confirmation`}>
-            <Confirmation confirmDeduction={() => {
+            <Confirmation data={pdsResponse} confirmDeduction={() => {
+                const { name, nhs } = pdsResponse;
+                setPatientList([{ name, nhs }, ...patientList]);
                 history.push(`/${publicPath}/activity`);
-                addToPatientList();
             }} />
         </Route>
         {/* <Route path="/success">
             <Success />
         </Route> */}
         <Route path={`/${publicPath}/activity`}>
-            <StatusList data={data} />
+            <StatusList data={patientList} />
         </Route>
     </Switch>;
 };
-
 // const data = [{
 //     nhsNumber: 5637487498,
 //     name: 'Donald Duck',
