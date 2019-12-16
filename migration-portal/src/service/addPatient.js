@@ -1,8 +1,8 @@
-import { features } from '../env';
+import { host, local } from '../features';
 import { patients } from './data';
 
 const addPatientService = async (patient) => {
-  await fetch(`http://localhost:5000/patients`, {
+  await fetch(`${host()}/patients`, {
     method: 'post',
     body: JSON.stringify(patient),
     headers: {
@@ -13,7 +13,7 @@ const addPatientService = async (patient) => {
 };
 
 export const addPatient = async (patient) => {
-  return features.stubs
+  return local()
     ? patients.push({ ...patient, status: 'Success', requestDate: 'Today' })
     : addPatientService(patient);
 };

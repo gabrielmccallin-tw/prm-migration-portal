@@ -1,13 +1,13 @@
-import { features } from '../env';
+import { local, host } from '../features';
 import { patients } from './data';
 
 const getPatientsService = async (ods) => {
-  const response = await fetch(`http://localhost:5000/patients`);
+  const response = await fetch(`${host()}/patients`);
   return await response.json();
 };
 
 export const getPatients = async (ods) => {
-  return features.stubs 
+  return local()
     ? patients
     : getPatientsService(ods);
 };

@@ -1,4 +1,3 @@
 export const publicPath = 'prm-migration-portal';
-export const features = {
-    stubs: true
-};
+export const stubApiDomain = 'http://localhost:5000';
+export const apiDomain = 'http://deployed.com/migration:5000';

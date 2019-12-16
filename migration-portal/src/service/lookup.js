@@ -1,13 +1,13 @@
-import { features } from '../env';
+import { host, local } from '../features';
 import { lookupData } from './data';
 
 const lookupService = async (nhsNumber) => {
-  const response = await fetch(`http://localhost:5000/patient-info/${nhsNumber}`);
+  const response = await fetch(`${host()}/patient-info/${nhsNumber}`);
   return await response.json();
 };
 
 export const lookup = async (nhsNumber) => {
-  return features.stubs 
+  return local()
     ? lookupData.find(item => item.nhsNumber === nhsNumber)
     : lookupService(nhsNumber);
 };
