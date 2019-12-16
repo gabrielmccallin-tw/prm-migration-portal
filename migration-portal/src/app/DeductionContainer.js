@@ -1,47 +1,43 @@
-import React, { useState } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
-import DeductionForm from "../deduction-form/DeductionForm";
-import Confirmation from "../confirmation/Confirmation";
-import Success from "../success/Success";
-import Login from "../login/Login";
-import Auth from "../auth/Auth"
-import NHSIdentitySandpitLogInUrl from "../config";
-import StatusList from "../status-list/StatusList";
-import { publicPath } from "../env";
-import { lookup } from "../service/pds"
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import Confirmation from '../confirmation/Confirmation';
+import DeductionForm from '../deduction-form/DeductionForm';
+import { publicPath } from '../env';
+import { addPatient } from '../service/addPatient';
+import { lookup } from '../service/lookup';
+import StatusList from '../status-list/StatusList';
+import { getPatients } from '../service/getPatients';
 
 const DeductionContainer = () => {
     const history = useHistory();
-
-    const [data, setData] = useState([]);
     const [pdsResponse, setPdsResponse] = useState();
-    const [patientList, setPatientList] = useState([]);
 
-    const addToPatientList = async () => {
-        const response = await fetch(`https://api.coinmarketcap.com/v1/ticker/?limit=10`);
-        const json = await response.json();
-        setData(json);
+    const [patients, setPatients] = useState([]);
+
+    const getPatientsService = async () => {
+        const patients = await getPatients('nhs');
+        setPatients(patients);
     };
 
+    useEffect(() => {
+        getPatientsService();
+    }, []);
+
+
     return <Switch>
-        {/* <Route exact path="/">
-          <Login login={() => window.location.href = `${NHSIdentitySandpitLogInUrl}`} loginMock={() => history.push("/home")}/>
-      </Route> */}
-        {/* <Route path="/auth" component={Auth}> */}
-        {/*<DeductionForm submitDeduction={() => history.push("/confirmation")}*/}
-        {/*               validateNhsNumber={validateNhsNumber}/>*/}
-        {/* </Route> */}
         <Route exact path={`/${publicPath}`}>
-            <DeductionForm submitDeduction={(nhs) => {
-                setPdsResponse(lookup(nhs));
+            <DeductionForm submitDeduction={async (nhs) => {
+                const patientInfo = await lookup(nhs);
+                setPdsResponse(patientInfo);
                 history.push(`/${publicPath}/confirmation`);
             }}
                 validateNhsNumber={validateNhsNumber} />
         </Route>
         <Route path={`/${publicPath}/confirmation`}>
-            <Confirmation data={pdsResponse} confirmDeduction={() => {
-                const { name, nhs } = pdsResponse;
-                setPatientList([{ name, nhs }, ...patientList]);
+            <Confirmation data={pdsResponse} confirmDeduction={async () => {
+                const { patientName, nhsNumber } = pdsResponse;
+                await addPatient({ patientName, nhsNumber, requestor: '3945873948567'})
+                getPatientsService();
                 history.push(`/${publicPath}/activity`);
             }} />
         </Route>
@@ -49,17 +45,11 @@ const DeductionContainer = () => {
             <Success />
         </Route> */}
         <Route path={`/${publicPath}/activity`}>
-            <StatusList data={patientList} />
+            <StatusList patients={patients}/>
         </Route>
     </Switch>;
 };
-// const data = [{
-//     nhsNumber: 5637487498,
-//     name: 'Donald Duck',
-//     requestor: 123456789012,
-//     requestDate: '13/12/2019',
-//     status: 'Success'
-// }];
+
 
 const validateNhsNumber = (nhsNumber) => {
     const nhsNumRegex = /^\d{10}$/;

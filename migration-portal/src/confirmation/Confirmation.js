@@ -1,18 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Confirmation = ({ confirmDeduction, data }) => {
-  const { nhs, name, dob, practice, telephone, email } = data;
+  const { nhsNumber, patientName, dob, practice, telephone, email } = data;
   return (
     <div data-testid="confirmation">
       <dl className="nhsuk-summary-list">
         <div className="nhsuk-summary-list__row">
           <dt className="nhsuk-summary-list__key">NHS Number</dt>
-          <dd className="nhsuk-summary-list__value">{nhs}</dd>
+          <dd className="nhsuk-summary-list__value">{nhsNumber}</dd>
         </div>
         <div className="nhsuk-summary-list__row">
           <dt className="nhsuk-summary-list__key">Name</dt>
-          <dd className="nhsuk-summary-list__value">{name}</dd>
+          <dd className="nhsuk-summary-list__value">{patientName}</dd>
         </div>
         <div className="nhsuk-summary-list__row">
           <dt className="nhsuk-summary-list__key">Date of birth</dt>

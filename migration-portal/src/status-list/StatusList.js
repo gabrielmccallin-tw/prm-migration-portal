@@ -1,36 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const popRows = (data) => {
-  return data.map(({ nhs, name }) => {
+  return data.map(({ nhsNumber, patientName, requestor, requestDate, status }) => {
     return (
       <tr className="nhsuk-table__row">
-        <td className="nhsuk-table__cell">{nhs}</td>
-        <td className="nhsuk-table__cell ">{name}</td>
-        <td className="nhsuk-table__cell ">8746598347598</td>
-        <td className="nhsuk-table__cell ">Today</td>
-        <td className="nhsuk-table__cell ">Pending</td>
+        <td className="nhsuk-table__cell">{nhsNumber}</td>
+        <td className="nhsuk-table__cell ">{patientName}</td>
+        <td className="nhsuk-table__cell ">{requestor}</td>
+        <td className="nhsuk-table__cell ">{requestDate}</td>
+        <td className="nhsuk-table__cell ">{status}</td>
       </tr>
     )
   })
 };
 
-// const popRows = (data) => {
-//   return data.map(({ symbol, name, rank, price_usd, market_cap_usd }) => {
-//     return (
-//       <tr className="nhsuk-table__row">
-//         <td className="nhsuk-table__cell">{symbol}</td>
-//         <td className="nhsuk-table__cell ">{name}</td>
-//         <td className="nhsuk-table__cell ">{rank}</td>
-//         <td className="nhsuk-table__cell ">{price_usd}</td>
-//         <td className="nhsuk-table__cell ">{market_cap_usd}</td>
-//       </tr>
-//     )
-//   })
-// };
-
-
-
-const StatusList = ({data}) => {
+const StatusList = ({patients}) => {
   return (
     <div data-testid="status-list" className="nhsuk-table__panel-with-heading-tab">
       <h3 className="nhsuk-table__heading-tab">Transferred patients</h3>
@@ -47,7 +31,7 @@ const StatusList = ({data}) => {
             </tr>
           </thead>
           <tbody className="nhsuk-table__body">
-            {popRows(data)}
+            {popRows(patients)}
           </tbody>
         </table>
       </div>
