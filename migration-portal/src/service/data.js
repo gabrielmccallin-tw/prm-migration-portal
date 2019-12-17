@@ -1,8 +1,8 @@
 export const lookupData = [{
-    patientName: 'Dick Grayson',
+    patientName: 'Richard Grayson',
     practice: 'GP Practice 1',
     telephone: '07700 900457',
-    email: 'dick.grayson@example.com',
+    email: 'richard.grayson@example.com',
     dob: '5 January 1978',
     nhsNumber: '1234567890'
 }, {

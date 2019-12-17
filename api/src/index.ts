@@ -17,10 +17,10 @@ const patients: {
 }[] = [];
 
 const data = [{
-    patientName: 'Dick Grayson',
+    patientName: 'Richard Grayson',
     practice: 'GP Practice 1',
     telephone: '07700 900457',
-    email: 'dick.grayson@example.com',
+    email: 'richard.grayson@example.com',
     dob: '5 January 1978',
     nhsNumber: '1234567890'
 }, {
@@ -52,8 +52,6 @@ const data = [{
     dob: '5 January 1978',
     nhsNumber: '5234567890'
 }];
-
-
 
 const lookup = (nhsNumber: string) => {
     const patient = data.find(item => item.nhsNumber === nhsNumber)
