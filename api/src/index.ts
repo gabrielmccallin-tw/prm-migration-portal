@@ -92,4 +92,4 @@ app.delete(`/${endpoints.patients}`, (req, res) => {
     res.send(`Deleted all patients`);
 });
 
-app.listen(5000);
+app.listen(5001);
