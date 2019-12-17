@@ -1,8 +1,9 @@
 import { host, local } from '../features';
 import { patients } from './data';
+import { endpoints } from '../env'
 
 const addPatientService = async (patient) => {
-  await fetch(`${host()}/patients`, {
+  await fetch(`${host()}/${endpoints.patients}`, {
     method: 'post',
     body: JSON.stringify(patient),
     headers: {

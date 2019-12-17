@@ -36,7 +36,7 @@ const DeductionContainer = () => {
         <Route path={`/${publicPath}/confirmation`}>
             <Confirmation data={pdsResponse} confirmDeduction={async () => {
                 const { patientName, nhsNumber } = pdsResponse;
-                await addPatient({ patientName, nhsNumber, requestor: '3945873948567'})
+                await addPatient({ patientName, nhsNumber, requester: '3945873948567'})
                 getPatientsService();
                 history.push(`/${publicPath}/activity`);
             }} />

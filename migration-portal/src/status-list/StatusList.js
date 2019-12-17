@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 const popRows = (data) => {
-  return data.map(({ nhsNumber, patientName, requestor, requestDate, status }) => {
+  return data.map(({ nhsNumber, patientName, requester, requestDate, status }) => {
     return (
       <tr className="nhsuk-table__row">
         <td className="nhsuk-table__cell">{nhsNumber}</td>
         <td className="nhsuk-table__cell ">{patientName}</td>
-        <td className="nhsuk-table__cell ">{requestor}</td>
+        <td className="nhsuk-table__cell ">{requester}</td>
         <td className="nhsuk-table__cell ">{requestDate}</td>
         <td className="nhsuk-table__cell ">{status}</td>
       </tr>

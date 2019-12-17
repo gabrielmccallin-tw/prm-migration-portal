@@ -2,6 +2,11 @@ import express from 'express';
 import { json } from 'body-parser';
 import cors from 'cors';
 
+const endpoints = {
+    patients: 'patients',
+    patient: 'patientinfo'
+};
+
 const app = express();
 app.use(json());
 app.use(cors({
@@ -10,7 +15,7 @@ app.use(cors({
 
 const patients: {
     patientName: string,
-    requestor: string,
+    requester: string,
     nhsNumber: string,
     status: string,
     requestDate: string
@@ -58,21 +63,21 @@ const lookup = (nhsNumber: string) => {
     return patient ? patient : {};
 };
 
-app.get('/patients', (req, res) => {
+app.get(`/${endpoints.patients}`, (req, res) => {
     res.send(patients);
 });
 
-app.get('/patient-info/:nhs', (req, res) => {
+app.get(`/${endpoints.patient}/:nhs`, (req, res) => {
     const { nhs } = req.params;
     res.send(lookup(nhs));
 });
 
-app.post('/patients', (req, res) => {
-    const { patientName, requestor, nhsNumber } = req.body;
+app.post(`/${endpoints.patients}`, (req, res) => {
+    const { patientName, requester, nhsNumber } = req.body;
     console.log(req.body);
     const patient = {
         patientName,
-        requestor,
+        requester,
         nhsNumber,
         status: 'Success',
         requestDate: 'Today'
@@ -82,9 +87,9 @@ app.post('/patients', (req, res) => {
     res.send(`Added ${patientName} to list`);
 });
 
-app.delete('/patients', (req, res) => {
+app.delete(`/${endpoints.patients}`, (req, res) => {
     patients.length = 0;
-    res.send(`Deleted all patiednts`);
+    res.send(`Deleted all patients`);
 });
 
 app.listen(5000);
