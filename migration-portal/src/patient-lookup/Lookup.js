@@ -1,20 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const DeductionForm = ({submitDeduction, validateNhsNumber}) => {
+export default ({ submitDeduction, validateNhsNumber }) => {
   const [nhsNumber, setNhsNumber] = useState("");
   const [error, setError] = useState("");
 
   const onSubmit = event => {
     event.preventDefault();
-    // const result = validateNhsNumber(nhsNumber);
-    // if(result.length>0){
-      // setError(result)
-    // }else{
-      submitDeduction(nhsNumber);
-    // }
+    submitDeduction(nhsNumber);
   };
 
-  const isEmpty = value =>{
+  const isEmpty = value => {
     return !value
   };
 
@@ -45,5 +40,3 @@ const DeductionForm = ({submitDeduction, validateNhsNumber}) => {
     </div>
   );
 };
-
-export default DeductionForm;

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Header from '../header/Header';
 import styles from './App.module.scss';
 import { parse } from 'query-string';
-import DeductionContainer from './DeductionContainer';
+import Content from './Content';
 import { setFeatures } from '../features';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
     <Fragment>
       <Header />
       <div className={styles.content}>
-        <DeductionContainer />
+        <Content />
       </div>
     </Fragment>
   )

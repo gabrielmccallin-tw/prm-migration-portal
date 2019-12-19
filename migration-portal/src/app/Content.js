@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import Confirmation from '../confirmation/Confirmation';
-import DeductionForm from '../deduction-form/DeductionForm';
+import Lookup from '../patient-lookup/Lookup';
 import { publicPath } from '../env';
 import { addPatient } from '../service/addPatient';
 import { lookup } from '../service/lookup';
 import StatusList from '../status-list/StatusList';
 import { getPatients } from '../service/getPatients';
 
-const DeductionContainer = () => {
+export default () => {
     const history = useHistory();
     const [pdsResponse, setPdsResponse] = useState();
 
@@ -26,7 +26,7 @@ const DeductionContainer = () => {
 
     return <Switch>
         <Route exact path={`/${publicPath}`}>
-            <DeductionForm submitDeduction={async (nhs) => {
+            <Lookup submitDeduction={async (nhs) => {
                 const patientInfo = await lookup(nhs);
                 setPdsResponse(patientInfo);
                 history.push(`/${publicPath}/confirmation`);
@@ -61,5 +61,3 @@ const validateNhsNumber = (nhsNumber) => {
         return "";
     }
 };
-
-export default DeductionContainer;
