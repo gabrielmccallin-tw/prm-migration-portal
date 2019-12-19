@@ -1,16 +1,18 @@
-# PRM Deductions Portal for GP Practices
+# Migration Portal for Practices
+`Proof of concept`
 
-The GP Practice Portal is a web application that will be used by GP Practice Staff to transfer a patient from their GP practice to the NHSE Repository.
+The Migration Portal is a web application that will be used by GP Practice Staff to manage a list of patients seen during a cutover. They can then request all of these patients to have updated data sent to the new supplier system via GP2GP and the Deductions datastore.
 
 ## Directories
 
-### portal-app
-Portal-app contains the web application that is the deductions portal for GP Practices. 
+### `/api`
+Mock api for testing
 
-### terraform
+### `/migration-portal`
+Front end application 
 
-The terraform directory contains all the terraform scripts which allow us to create infrastructure automatically on AWS.
+### `/terraform`
+The terraform directory contains all the terraform scripts which allow us to create infrastructure automatically on AWS
 
-### utils
-
+### `/utils`
 The script allows us to assume a role on aws cli automatically
