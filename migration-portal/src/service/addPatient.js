@@ -15,6 +15,6 @@ const addPatientService = async (patient) => {
 
 export const addPatient = async (patient) => {
   return local()
-    ? patients.push({ ...patient, status: 'Success', requestDate: 'Today' })
+    ? patients.push({ ...patient, status: 'Success', requestDate: '2019-12-05T00:00:00' })
     : addPatientService(patient);
 };

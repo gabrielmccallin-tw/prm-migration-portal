@@ -1,4 +1,5 @@
 import React from 'react';
+import { convertDate } from '../service/date';
 
 const popRows = (data) => {
   return data.map(({ nhsNumber, patientName, requester, requestDate, status }) => {
@@ -7,7 +8,7 @@ const popRows = (data) => {
         <td className="nhsuk-table__cell">{nhsNumber}</td>
         <td className="nhsuk-table__cell ">{patientName}</td>
         <td className="nhsuk-table__cell ">{requester}</td>
-        <td className="nhsuk-table__cell ">{requestDate}</td>
+        <td className="nhsuk-table__cell ">{convertDate(requestDate)}</td>
         <td className="nhsuk-table__cell ">{status}</td>
       </tr>
     )

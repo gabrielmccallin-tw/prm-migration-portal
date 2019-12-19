@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { convertDate } from '../service/date';
 
 const Confirmation = ({ confirmDeduction, data }) => {
   const { nhsNumber, patientName, dob, practice, telephone, email } = data;
@@ -16,7 +17,7 @@ const Confirmation = ({ confirmDeduction, data }) => {
         </div>
         <div className="nhsuk-summary-list__row">
           <dt className="nhsuk-summary-list__key">Date of birth</dt>
-          <dd className="nhsuk-summary-list__value">{dob}</dd>
+          <dd className="nhsuk-summary-list__value">{convertDate(dob)}</dd>
         </div>
         <div className="nhsuk-summary-list__row">
           <dt className="nhsuk-summary-list__key">Current GP Practice</dt>
