@@ -24,7 +24,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="nhsuk-header__transactional-service-name">
-          <a className="nhsuk-header__transactional-service-name--link" href="/">Migration dPortal</a>
+          <a className="nhsuk-header__transactional-service-name--link" href="/">Migration Portal</a>
         </div>
         <div className="nhsuk-header__content" id="content-header">
           <div className="nhsuk-header__menu nhsuk-header__menu--only">
