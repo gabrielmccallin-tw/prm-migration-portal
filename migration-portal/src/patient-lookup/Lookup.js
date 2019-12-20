@@ -9,10 +9,6 @@ export default ({ submitDeduction }) => {
     submitDeduction(nhsNumber);
   };
 
-  const isEmpty = value => {
-    return !value
-  };
-
   return (
     <div>
       <form data-testid="deduction-form" onSubmit={onSubmit} autoComplete="off">
