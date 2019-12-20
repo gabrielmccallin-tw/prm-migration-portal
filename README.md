@@ -10,9 +10,3 @@ Mock api for testing
 
 ### `/migration-portal`
 Front end application 
-
-### `/terraform`
-The terraform directory contains all the terraform scripts which allow us to create infrastructure automatically on AWS
-
-### `/utils`
-The script allows us to assume a role on aws cli automatically
