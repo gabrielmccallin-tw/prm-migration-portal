@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-export default ({ submitDeduction, validateNhsNumber }) => {
+export default ({ submitDeduction }) => {
   const [nhsNumber, setNhsNumber] = useState("");
-  const [error, setError] = useState("");
+  const [error] = useState("");
 
   const onSubmit = event => {
     event.preventDefault();

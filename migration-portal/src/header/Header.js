@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { publicPath } from '../env';
 
 const Header = () => {
   const [clicked, setClicked] = useState(true);
-  const history = useHistory();
 
   const menuToggle = () => {
     setClicked(!clicked);
