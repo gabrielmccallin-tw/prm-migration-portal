@@ -21,7 +21,7 @@ Application runs at `http://localhost:3000/prm-migration-portal`, because the si
 - To call an API running at `http://localhost:5001` append `?api=stub`
 - To call the production API running at `http://deployed.com/migration:5000` append `?api=prod`
 
-Change the API domains in `/src/env.js`, the production URL above is not real at the moment.
+Change the API domains in `/src/env.js`, the production URL above is fake.
 
 ### Running the tests
 
