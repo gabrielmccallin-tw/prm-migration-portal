@@ -17,6 +17,7 @@ const popRows = (data) => {
 
 const StatusList = ({patients}) => {
   return (
+    <div>
     <div data-testid="status-list" className="nhsuk-table__panel-with-heading-tab">
       <h3 className="nhsuk-table__heading-tab">Transferred patients</h3>
       <div className="nhsuk-table-responsive">
@@ -36,6 +37,10 @@ const StatusList = ({patients}) => {
           </tbody>
         </table>
       </div>
+    </div>
+      <button className="nhsuk-button nhsuk-u-align-right">
+        Transfer all patients
+    </button>
     </div>
   );
 };
