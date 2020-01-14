@@ -30,7 +30,7 @@ export default ({ submitDeduction }) => {
           {error}
         </span>
         <button className="nhsuk-button" type="submit">
-          Lookup patient
+          Find patient
         </button>
       </form>
     </div>

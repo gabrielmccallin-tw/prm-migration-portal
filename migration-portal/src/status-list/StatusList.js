@@ -19,7 +19,6 @@ const StatusList = ({patients}) => {
   return (
     <div>
     <div data-testid="status-list" className="nhsuk-table__panel-with-heading-tab">
-      <h3 className="nhsuk-table__heading-tab">Transferred patients</h3>
       <div className="nhsuk-table-responsive">
         <table className="nhsuk-table">
           <caption className="nhsuk-table__caption">Other possible causes of your symptoms</caption>

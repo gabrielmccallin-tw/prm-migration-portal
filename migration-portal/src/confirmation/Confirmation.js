@@ -33,7 +33,7 @@ const Confirmation = ({ confirmDeduction, data }) => {
         </div>
       </dl>
       <button className="nhsuk-button" onClick={() => confirmDeduction()}>
-        Confirm transfer
+        Add to transfer list
     </button>
       <div className="nhsuk-back-link">
         <Link className="nhsuk-back-link__link" to="/home">
