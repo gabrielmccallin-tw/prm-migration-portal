@@ -1,15 +1,19 @@
 import React from 'react';
-import {fireEvent, render} from '@testing-library/react';
+import { MemoryRouter } from "react-router-dom";
+import TestRenderer from 'react-test-renderer';
 import App from './App';
-import {MemoryRouter} from "react-router-dom";
 
 describe('<App />', () => {
-  it('should render the header', () => {
-    const {getByTestId} = render(
+  it('should render the header', async () => {
+    const testRenderer = TestRenderer.create(
       <MemoryRouter>
-        <App/>
-      </MemoryRouter>
-    );
-    expect(getByTestId("header")).toBeTruthy();
+        <App />
+      </MemoryRouter>);
+    const testInstance = testRenderer.root;
+
+    expect(testInstance.findByType('header')).toBeTruthy();
   });
 });
+
+
+
