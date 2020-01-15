@@ -8,7 +8,7 @@ const getPatientsService = async (ods) => {
 };
 
 export const getPatients = async (ods) => {
-  return local()
+  return host() === ''
     ? patients
     : getPatientsService(ods);
 };

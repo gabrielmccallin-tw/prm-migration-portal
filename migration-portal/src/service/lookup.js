@@ -8,7 +8,7 @@ const lookupService = async (nhsNumber) => {
 };
 
 export const lookup = async (nhsNumber) => {
-  return local()
+  return host() === ''
     ? lookupData.find(item => item.nhsNumber === nhsNumber)
     : lookupService(nhsNumber);
 };

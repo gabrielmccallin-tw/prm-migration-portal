@@ -1,7 +1,13 @@
 import { stubApiDomain, apiDomain } from './env';
 
-export const features = {
-    api: 'fe'
+const domainOptions = {
+    stub: 'stub',
+    prod: 'prod',
+    none: 'none'
+};
+
+const features = {
+    api: domainOptions.none
 };
 
 export const setFeatures = (featuresToSet) => {
@@ -11,13 +17,9 @@ export const setFeatures = (featuresToSet) => {
 };
 
 export const host = () => {
-    return features.api === 'stub'
-        ? stubApiDomain
-        : features.api === 'prod'
-            ? apiDomain
-            : 'none';
+    return {
+        [domainOptions.stub]: stubApiDomain,
+        [domainOptions.prod]: apiDomain,
+        [domainOptions.none]: ''
+    } [features.api];
 };
-
-export const local = () => {
-    return features.api === 'fe';
-}

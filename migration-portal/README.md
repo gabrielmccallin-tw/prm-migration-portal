@@ -19,7 +19,7 @@ Application runs at **http://localhost:3000/prm-migration-portal** because the s
 ### Switch between API domains
 - By default the front end will not make network calls, all data is hardcoded.
 - To call an API running at **http://localhost:5001** append **?api=stub**
-- To call the production API running at **http://deployed.com/migration:5000** append **?api=prod**
+- To call the production API running at **http://dev.prm.patient-deductions.nhs.uk** append **?api=prod**
 
 Change the API domains in **/src/env.js**, the production URL above is fake.
 
