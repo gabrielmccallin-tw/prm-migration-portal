@@ -7,7 +7,7 @@ const domainOptions = {
 };
 
 const features = {
-    api: domainOptions.none
+    api: domainOptions.prod
 };
 
 export const setFeatures = (featuresToSet) => {
