@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/prm-migration-portal/static/css/main.ca646e93.chunk.css",
+    "main.js": "/prm-migration-portal/static/js/main.69015d90.chunk.js",
+    "main.js.map": "/prm-migration-portal/static/js/main.69015d90.chunk.js.map",
+    "runtime-main.js": "/prm-migration-portal/static/js/runtime-main.7f32b7e3.js",
+    "runtime-main.js.map": "/prm-migration-portal/static/js/runtime-main.7f32b7e3.js.map",
+    "static/js/2.b765d4f9.chunk.js": "/prm-migration-portal/static/js/2.b765d4f9.chunk.js",
+    "static/js/2.b765d4f9.chunk.js.map": "/prm-migration-portal/static/js/2.b765d4f9.chunk.js.map",
+    "index.html": "/prm-migration-portal/index.html",
+    "precache-manifest.dfc937e3923360d5023d110a9ff21eb5.js": "/prm-migration-portal/precache-manifest.dfc937e3923360d5023d110a9ff21eb5.js",
+    "service-worker.js": "/prm-migration-portal/service-worker.js",
+    "static/css/main.ca646e93.chunk.css.map": "/prm-migration-portal/static/css/main.ca646e93.chunk.css.map",
+    "static/js/2.b765d4f9.chunk.js.LICENSE": "/prm-migration-portal/static/js/2.b765d4f9.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7f32b7e3.js",
+    "static/js/2.b765d4f9.chunk.js",
+    "static/css/main.ca646e93.chunk.css",
+    "static/js/main.69015d90.chunk.js"
+  ]
+}
